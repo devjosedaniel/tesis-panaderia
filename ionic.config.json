@@ -1,5 +1,7 @@
 {
   "name": "panaderia-chimborazo",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/inicio"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Registro de ingreso</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card class="ion-padding" mode="ios">
+        <form action="">
+            <h2>Productos por ingresar</h2>
+            <ion-item>
+                <ion-label style="font-weight: bold;">Seleccione Turno</ion-label>
+                <ion-select (ionChange)="onChange($event)" [(ngModel)]="turno" name="turno" interface="popover" required placeholder="Seleccione turno">
+                    <ion-select-option value="1">Matutino</ion-select-option>
+                    <ion-select-option value="2">Vespertino</ion-select-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-label style="max-width: 50px;font-weight: bold;" slot="start">Cant</ion-label>
+                <ion-label style="font-weight: bold;">Producto</ion-label>
+                <ion-label *ngIf="turno && turno == 2 && sobrantes.length>0" style="text-align: right;font-weight: bold;" slot="end">Sobrantes</ion-label>
+            </ion-item>
+            <ion-item *ngFor="let p of productos; let i = index">
+
+                <ion-input [(ngModel)]="cantidades[i]" value="0" name="cantidades" slot="start" style="max-width: 50px;" type="number"></ion-input>
+                <ion-input name="idproducto" class="ion-hide"></ion-input>
+                <ion-label>{{p.nombre}}</ion-label>
+                <ion-note *ngIf="turno && turno == 2 && sobrantes.length>0" slot="end">{{p.id | sobrante : sobrantes}}</ion-note>
+            </ion-item>
+            <ion-button class="ion-margin-top" (click)="registrar()" expand="block" fill="solid" shape="">
+                Registrar
+            </ion-button>
+        </form>
+    </ion-card>
+</ion-content>

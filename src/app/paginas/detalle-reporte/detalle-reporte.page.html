@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="atras()">
+                <ion-icon name="arrow-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Detalle</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card>
+        <ion-card-content>
+            <div class="ion-padding">
+                <ion-grid>
+                    <ion-row>
+                        <ion-col style="font-weight: bold"> Productos </ion-col>
+                        <ion-col style="font-weight: bold"> Ingresados </ion-col>
+                        <ion-col style="font-weight: bold"> Vendidos </ion-col>
+                        <ion-col style="font-weight: bold"> Sobrantes </ion-col>
+                    </ion-row>
+                    <ion-row *ngFor="let d of data">
+                        <ion-col> {{d.producto}} </ion-col>
+                        <ion-col> {{d.entrada}} </ion-col>
+                        <ion-col> {{d.salida}} </ion-col>
+                        <ion-col>{{d.entrada-d.salida}}</ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

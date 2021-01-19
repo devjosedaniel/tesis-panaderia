@@ -1,0 +1,21 @@
+<ion-content>
+    <div class="center">
+        <div>
+            <img src="assets/logo-panaderia.png" alt="">
+        </div>
+        <form class="ion-margin-bottom" autocomplete="off" action="">
+            <ion-item transparent>
+                <ion-icon icon-small slot="start" name="person"></ion-icon>
+                <ion-input name="nombre" [(ngModel)]="usuario.nombre" transparent type="text" placeholder="Usuario"></ion-input>
+            </ion-item>
+            <ion-item transparent>
+                <ion-icon icon-small slot="start" name="lock-closed"></ion-icon>
+                <ion-input name="password" [(ngModel)]="usuario.password" transparent type="password" placeholder="Contraseña"></ion-input>
+            </ion-item>
+            <div linespace></div>
+            <ion-button mode="ios" color="amarillo" (click)="login()" expand="block" fill="solid" shape="round">
+                Iniciar
+            </ion-button>
+        </form>
+    </div>
+</ion-content>

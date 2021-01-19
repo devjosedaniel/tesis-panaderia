@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <!-- <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons> -->
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="inicio"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Usuarios</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <ion-toolbar>
+
+        <ion-title>
+            <h2 style="font-weight: bold;">Listado de Usuarios</h2>
+        </ion-title>
+        <ion-buttons color="dark" slot="end">
+            <ion-button [routerLink]="['/editar-usuario/0']" routerLinkActive="router-link-active">
+                <ion-icon slot="start" name="add"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+
+    <ion-item-group>
+        <ion-item-divider>
+            <ion-label>Nombre:</ion-label>
+        </ion-item-divider>
+        <ion-item *ngFor="let s of usuarios; let i = index" [routerLink]="['/editar-usuario/',s.id]" routerLinkActive="router-link-active" detail>
+            <ion-text slot="start">{{i + 1}}</ion-text>
+            <ion-label>{{s.nombre}}</ion-label>
+        </ion-item>
+    </ion-item-group>
+</ion-content>

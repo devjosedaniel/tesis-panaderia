@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="inicio"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Gráfico</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="ion-padding">
+        <ion-item>
+            <ion-label>Tipo</ion-label>
+            <ion-select [(ngModel)]="tipo" name="tipo" interface="popover" required placeholder="Seleccione tipo">
+                <ion-select-option value="1">Ventas generales</ion-select-option>
+                <ion-select-option value="2">Top productos sucursales</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item *ngIf="tipo === '2'">
+            <ion-label>Sucursal</ion-label>
+            <ion-select (ionChange)="onChange($event)" [(ngModel)]="idSucursal" interface="popover" name="idsucursal" required placeholder="Seleccione sucursal">
+                <ion-select-option *ngFor="let s of sucursales" [value]="s.id">{{s.nombre}}</ion-select-option>
+
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Fecha</ion-label>
+            <ion-datetime pickerFormat="YYYY/MM/DD" [(ngModel)]="fecha" doneText="Listo" cancelText="Cancelar" value="2020/09/18" displayFormat="YYYY/MM/DD" placeholder="Seleccione fecha"></ion-datetime>
+        </ion-item>
+        <div class="ion-text-center">
+            <ion-button mode="ios" color="primary" (click)="gafricar()" shape="">
+                Gráficar
+            </ion-button>
+        </div>
+    </div>
+    <ion-card *ngIf="data && data.length>0 && tipo === '1'">
+        <google-chart [data]="columnChart1"></google-chart>
+    </ion-card>
+    <ion-card *ngIf="data && data.length>0 && tipo === '2'">
+        <google-chart [data]="pieChart"></google-chart>
+    </ion-card>
+</ion-content>

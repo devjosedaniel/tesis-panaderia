@@ -1,0 +1,56 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <!-- <ion-buttons slot="start">
+          <ion-button (click)="regresar()" expand="block" fill="clear" shape="round">
+              <ion-icon name="arrow-back"></ion-icon>
+          </ion-button>
+      </ion-buttons> -->
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="usuario"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Información Usuario</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+    <ion-card class="ion-padding">
+        <form autocomplete="off" action="">
+            <ion-card-header>
+                <!-- <ion-card-subtitle>Awesome Subtitle</ion-card-subtitle> -->
+                <!-- <ion-card-title style="font-weight: bold;">{{textoCard}}
+
+              </ion-card-title> -->
+                <ion-toolbar>
+
+                    <ion-title>
+                        <h2 style="font-weight: bold;">{{textoCard}}</h2>
+                    </ion-title>
+                    <ion-buttons *ngIf="usuario.id > 0" color="dark" slot="end">
+                        <ion-button (click)="eliminar()" routerLinkActive="router-link-active">
+                            <ion-icon name="trash"></ion-icon>
+                        </ion-button>
+                    </ion-buttons>
+                </ion-toolbar>
+
+            </ion-card-header>
+            <ion-item>
+                <ion-label position="stacked">Nombre de Usuario</ion-label>
+                <ion-input required autocomplete="off" [(ngModel)]="usuario.nombre" name="nombre" [value]="usuario.nombre"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="stacked">Seleccione sucursal</ion-label>
+                <ion-select [value]="usuario.idsucursal" mode="ios" name="idsucursal" [(ngModel)]="usuario.idsucursal">
+                    <ion-select-option *ngFor="let s of sucursales" [value]="s.id">{{s.nombre}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label position="stacked">Contraseña</ion-label>
+                <ion-input autocomplete="off" type="password" required [(ngModel)]="usuario.password" name="password" [value]=""></ion-input>
+            </ion-item>
+            <div class="ion-text-center ion-padding-top">
+                <ion-button size="small" (click)="Guardar()" color="primary" shape="round">
+                    Guardar
+                </ion-button>
+            </div>
+        </form>
+    </ion-card>
+</ion-content>
