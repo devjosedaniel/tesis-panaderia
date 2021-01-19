@@ -31,4 +31,5 @@ export class Usuario{
     nombre?: string;
     password?: string;
     idsucursal?: number;
+    sucursal?: string;
 }
